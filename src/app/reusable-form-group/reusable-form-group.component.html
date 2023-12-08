@@ -1,0 +1,36 @@
+<div [formGroupName]="controlKey">
+  <div class="input-container">
+    <label>Email</label>
+    <input formControlName="email" placeholder="Email" />
+    <div
+      *ngIf="
+        parentFormGroup.get(controlKey).get('email').dirty &&
+        parentFormGroup.get(controlKey).get('email').errors as errors
+      "
+    >
+      <div *ngIf="errors?.email; else requiredError" class="validation-error">
+        Invalid email format.
+      </div>
+      <ng-template #requiredError>
+        <div class="validation-error">Email is required.</div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="input-container">
+    <label>Email confirmation</label>
+    <input formControlName="emailConfirm" placeholder="Email confirm" />
+    <div
+      *ngIf="
+        parentFormGroup.get(controlKey).get('emailConfirm').dirty &&
+        parentFormGroup.get(controlKey).get('emailConfirm').errors as errors
+      "
+    >
+      <div *ngIf="errors?.email; else requiredError" class="validation-error">
+        Invalid email format.
+      </div>
+      <ng-template #requiredError>
+        <div class="validation-error">Email is required.</div>
+      </ng-template>
+    </div>
+  </div>
+</div>
